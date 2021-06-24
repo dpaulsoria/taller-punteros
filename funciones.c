@@ -69,6 +69,7 @@ int parsear_fecha(const char *fecha_str, int *dia, int *mes, int *ano) {
 }
 
 int bytes_significativos(void *valor, unsigned long tamano_valor, unsigned char *bytes, int num_bytes, int mas_menos) {
+	
 	// >>> MANEJO DE ERRORES - 1 <<<
 	if (valor == NULL || num_bytes > tamano_valor || bytes == NULL)
 		return 1;
@@ -79,20 +80,18 @@ int bytes_significativos(void *valor, unsigned long tamano_valor, unsigned char 
 	// Uso LONG porque representa 8 bytes de memoria, el máximo que puede almacenar una variable
 	unsigned long *cp_valor = (unsigned long *)valor;
 	char array[63] = {0}; // Tiene 64 espacios porque el máximo de bytes disponibles por variable es 8
-	char result;
+	
 	// >>> VARIABLES - 0 <<<
 
 	// >>> IMPLEMENTACIÓN - 1 <<<
 
-	result = decToHex(*cp_valor, array[63]);
+	char result = decToHex(&cp_valor, array[63]);
 	// MSB
 	if (mas_menos == 1) {
-		
-		printf("array: %s\n", result);
+		printf("array: %s\n", result[1]);
 	// LSB
 	} else if  (mas_menos == 0) {
-
-		printf("array: %s\n", result);
+		printf("array: %s\n", result[1]);
 	// ERROR
 	} else
 		return 1;

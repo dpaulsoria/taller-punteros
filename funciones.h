@@ -27,6 +27,7 @@ int fecha_verificar_mes(char *mes, int *dia, int *mes1, int *ano);
 //
 // Los bytes deben guardarlos en el orden que los van encontrando.
 int bytes_significativos(void *valor, unsigned long tamano_valor, unsigned char *bytes, int num_bytes, int mas_menos);
+char decToHex(void *valor, char arreglo[63]);
 
 //Retorna el puntero al primer caracter donde empieza el substring en un_string
 //y NULL si no se encuentra el substring.
