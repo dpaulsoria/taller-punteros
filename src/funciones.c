@@ -90,10 +90,10 @@ int bytes_significativos(void *valor, unsigned long tamano_valor, unsigned char 
 	printf("DEC: %d\n", dec);
 	// MSB - dec = 0 indica éxtio en decToHex
 	if (mas_menos == 1 || dec == 0) {
-		printf("array: %c\n", array[1]);
+		printf("array: %c\n", array[1]); //0x539A0mk
 	// LSB -  dec = 0 indica éxtio en decToHex
 	} else if  (mas_menos == 0 || dec == 0) {
-		printf("array: %c\n", array[1]);
+		printf("array: %c\n", array[1]); //0x539A0
 	// ERROR
 	} else
 		return 1;
@@ -136,6 +136,7 @@ int decToHex(void *valorDecimal, char arreglo[64]) {
         }
  
         *n /= 16;
+		printf("Arreglo: %s\n", arreglo);
     }
 	return 0;
 }

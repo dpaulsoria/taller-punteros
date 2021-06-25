@@ -1,4 +1,4 @@
-#include "funciones.h"
+#include "include/funciones.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv){
 
 	int num_bytes = 3;
 	unsigned char bytes[num_bytes];
-	long valor = 342432;
+	long valor = 342432; //0x539A0
 	unsigned long size = sizeof(long);
 	// ssh-add
 
