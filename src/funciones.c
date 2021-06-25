@@ -79,19 +79,21 @@ int bytes_significativos(void *valor, unsigned long tamano_valor, unsigned char 
 
 	// Uso LONG porque representa 8 bytes de memoria, el máximo que puede almacenar una variable
 	unsigned long *cp_valor = (unsigned long *)valor;
-	char array[63] = {0}; // Tiene 64 espacios porque el máximo de bytes disponibles por variable es 8
+	char array[64];
+	// Tiene 64 espacios porque el máximo de bytes disponibles por variable es 8
 	
 	// >>> VARIABLES - 0 <<<
 
 	// >>> IMPLEMENTACIÓN - 1 <<<
 
-	char result = decToHex(&cp_valor, array[63]);
+	int dec = decToHex(&cp_valor, &array[64]);
+	printf("DEC: %d\n", dec);
 	// MSB
-	if (mas_menos == 1) {
-		printf("array: %s\n", result[1]);
+	if (mas_menos == 1 || dec == 0) {
+		printf("array: %c\n", array[1]);
 	// LSB
-	} else if  (mas_menos == 0) {
-		printf("array: %s\n", result[1]);
+	} else if  (mas_menos == 0 || dec == 0) {
+		printf("array: %c\n", array[1]);
 	// ERROR
 	} else
 		return 1;
@@ -101,10 +103,18 @@ int bytes_significativos(void *valor, unsigned long tamano_valor, unsigned char 
 	return 0;
 }
 
-char decToHex(void *valorDecimal, char arreglo[63]) {
+int decToHex(void *valorDecimal, char arreglo[64]) {
     // char array to store hexadecimal number
     // char hexaDeciNum[100];
-	
+
+	// >>> MANEJO DE ERRORES - 1 <<<
+
+	if ((int *)valorDecimal == 0 || arreglo == NULL) {
+		return 1;
+	}
+
+	// >>> MANEJO DE ERRORES - 0 <<<
+
 	// Casteo de voi * a int *
 	int *n = (int *)valorDecimal;
     int i = 0;
@@ -127,9 +137,7 @@ char decToHex(void *valorDecimal, char arreglo[63]) {
  
         *n /= 16;
     }
- 
-
-	return arreglo[63];
+	return 0;
 }
 
 char *buscar_substring(char *un_string, char *substring) {

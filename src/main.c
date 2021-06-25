@@ -53,12 +53,11 @@ int main(int argc, char **argv){
 	printf("Día: %d - Mes: %d - Año: %d\n", day, month, year);
 
 	// SEGUNDA FUNCIÓN
-	/*
+	
 	int byte_S = bytes_significativos(&valor, size, bytes, num_bytes, 1);
 	printf("%d\n", byte_S);
 	printf("Num_bytes: %d - Bytes: %s - Long: %ld\n", num_bytes, bytes, valor);
-	return 0;
-	*/
+	
 	// TERCERA FUNCIÓN
 	/*
 	print("String: %s - PunteroString: %p - Substring: %s -  PunteroSubstring: %p\n", string[4], string_p,  substring[1], substring_p);
