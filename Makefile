@@ -1,14 +1,14 @@
 
-punteros: main.o funciones.o bytes.o	 
-	gcc -fsanitize=address,undefined main.o funciones.o bytes.o pruebas.a -o punteros
+punteros: obj/main.o obj/funciones.o obj/bytes.o	 
+	gcc -fsanitize=address,undefined obj/main.o obj/funciones.o obj/bytes.o pruebas.a -o punteros
 
-main.o: main.c
-	gcc -c -Wall main.c -g 
+main.o: src/main.c
+	gcc -c -Wall src/main.c -g 
 
-bytes.o: bytes.c
-	gcc -c -Wall bytes.c -g
-funciones.o: funciones.c
-	gcc -c -Wall funciones.c -g
+bytes.o: src/bytes.c
+	gcc -c -Wall src/bytes.c -g
+funciones.o: src/funciones.c
+	gcc -c -Wall src/funciones.c -g
 test_fecha:
 	./punteros -p 1
 
@@ -18,12 +18,12 @@ test_bytes:
 test_substring:
 	./punteros -p 3
 
-pruebas.o: pruebas.c
-	gcc pruebas.c -I . -c
+pruebas.o: src/pruebas.c
+	gcc src/pruebas.c -I . -c
 
-pruebas.a: pruebas.o
-	ar rcs pruebas.a pruebas.o
+pruebas.a: obj/pruebas.o
+	ar rcs pruebas.a obj/pruebas.o
 
 .PHONY: clean
 clean:
-	rm -f punteros pruebas.o main.o bytes.o
+	rm -f punteros obj/pruebas.o obj/main.o obj/bytes.o
